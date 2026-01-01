@@ -1,0 +1,16 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here --> 
+    <!-- <bean id="student" class="com.example.Student" scope="prototype">-->
+    <bean id="student" class="com.example.Student">
+    <!-- if we dont mention type of value or index or name, then it will take sequence as 0,1,2... -->  
+    <!-- for name to work in sequence, we need to have an annotation in the class with names which match constructor parameter names @ConstructorProperties({"age", "laptop"}) -->
+    <constructor-arg index="0" value="21"/>
+    <constructor-arg index="1" type="com.example.Laptop" ref="lap"/>
+    </bean>
+    <bean id="lap" class="com.example.Laptop">
+    </bean>
+</beans>
