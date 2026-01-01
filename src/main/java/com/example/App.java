@@ -1,6 +1,7 @@
 package com.example;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -11,9 +12,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml"); 
-        Student student = (Student) context.getBean("student"); 
-        student.code();
+        ApplicationContext context = new AnnotationConfigApplicationContext(com.example.config.Appconfig.class); 
+        //ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
+        Desktop desktop = context.getBean("desk1", Desktop.class);
+        desktop.compile();
         
     }
 }
